@@ -9,10 +9,15 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    private GeneralFunctions _func;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //setup
+        _func = new GeneralFunctions();
     }
 
     @Override
@@ -38,27 +43,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playersClicked(View b) {
-        Intent intent = new Intent(MainActivity.this, PlayersActivity.class);
-        startActivity(intent);
+        _func.launchActivity(new Intent(MainActivity.this, PlayersActivity.class));
     }
+
     public void draftClicked(View b) {
-        Intent intent = new Intent(MainActivity.this, DraftActivity.class);
-        startActivity(intent);
+        _func.launchActivity(new Intent(MainActivity.this, DraftActivity.class));
     }
     public void administrationClicked(View b) {
-        Intent intent = new Intent(MainActivity.this, AdministrationActivity.class);
-        startActivity(intent);
+        _func.launchActivity(new Intent(MainActivity.this, AdministrationActivity.class));
     }
     public void matchClicked(View b) {
-        Intent intent = new Intent(MainActivity.this, MatchActivity.class);
-        startActivity(intent);
+        _func.launchActivity(new Intent(MainActivity.this, MatchActivity.class));
     }
     public void whistletoolClicked(View b) {
-        Intent intent = new Intent(MainActivity.this, WhistletoolActivity.class);
-        startActivity(intent);
+        _func.launchActivity(new Intent(MainActivity.this, WhistletoolActivity.class));
     }
     public void newteamClicked(View b) {
-        Intent intent = new Intent(MainActivity.this, NewteamActivity.class);
-        startActivity(intent);
+        _func.launchActivity(new Intent(MainActivity.this, NewteamActivity.class));
     }
 }

@@ -81,5 +81,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="database.Provider"
+            android:exported="true"
+            android:authorities="provider">
+        </provider>
     </application>
 </manifest>
