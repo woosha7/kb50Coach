@@ -1,6 +1,7 @@
 package groep3.coach;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,12 +17,12 @@ public class GeneralFunctions extends AppCompatActivity {
         startActivity(a);
     }
 
-    private Cursor cpRetrieveItem(String link, int i) {
+    public Cursor cpRetrieveItem(String link, int i) {
         Uri item = Uri.parse(link + i);
         return cpRetrieveItems(item,null,null);
     }
 
-    private Cursor cpRetrieveItems(Uri u, String where, String order) {
+    public Cursor cpRetrieveItems(Uri u, String where, String order) {
         Uri items = u;
         Cursor c;
         if (android.os.Build.VERSION.SDK_INT < 11) {

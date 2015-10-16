@@ -85,7 +85,7 @@
         <provider
             android:name="database.Provider"
             android:exported="true"
-            android:authorities="provider">
+            android:authorities="coach">
         </provider>
     </application>
 </manifest>

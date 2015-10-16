@@ -201,18 +201,18 @@ public class Provider extends ContentProvider {
             "( id integer primary key autoincrement," +
             TABLE_TRANING_DATE + SQL_TXT_NN + END;
 
-    static final String SQL_CREATE_TABLE_PLAYER_TRAINING    = "create table" + TABLE_PLAYER_TRAINING +
+    static final String SQL_CREATE_TABLE_PLAYER_TRAINING    = "create table " + TABLE_PLAYER_TRAINING +
             "( id integer primary key autoincrement," +
             TABLE_PLAYER_TRAINING_PLAYER    + REF_INT + TABLE_PLAYER    +"(id)"+ NEXT +
             TABLE_PLAYER_TRAINING_TRAINING  + REF_INT + TABLE_TRAINING  +"(id)"+ NEXT +
             TABLE_PLAYER_TRAINING_RATING + SQL_TXT_NN + END;
 
-    static final String SQL_CREATE_TABLE_PLAYER_POSITION    = "create table" + TABLE_PLAYER_POSITION +
+    static final String SQL_CREATE_TABLE_PLAYER_POSITION    = "create table " + TABLE_PLAYER_POSITION +
             "( id integer primary key autoincrement," +
             TABLE_PLAYER_POSITION_PLAYER    + REF_INT + TABLE_PLAYER    +"(id)"+ NEXT +
             TABLE_PLAYER_POSITION_POSITION  + REF_INT + TABLE_POSITION    +"(id)"+ END;
 
-    static final String SQL_CREATE_TABLE_PLAYER_MATCH       = "create table" + TABLE_PLAYER_MATCH +
+    static final String SQL_CREATE_TABLE_PLAYER_MATCH       = "create table " + TABLE_PLAYER_MATCH +
             "( id integer primary key autoincrement," +
             TABLE_PLAYER_MATCH_PLAYER       + REF_INT + TABLE_PLAYER    +"(id)"+ NEXT +
             TABLE_PLAYER_MATCH_MATCH        + REF_INT + TABLE_MATCH +"(id)"+ END;
