@@ -43,22 +43,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playersClicked(View b) {
-        _func.launchActivity(new Intent(MainActivity.this, PlayersActivity.class));
+        startActivity(new Intent(MainActivity.this, TeamActivity.class));
     }
 
     public void draftClicked(View b) {
-        _func.launchActivity(new Intent(MainActivity.this, DraftActivity.class));
+        startActivity(new Intent(MainActivity.this, TeamActivity.class));
     }
     public void administrationClicked(View b) {
-        _func.launchActivity(new Intent(MainActivity.this, AdministrationActivity.class));
+        startActivity(new Intent(MainActivity.this, TeamActivity.class));
     }
     public void matchClicked(View b) {
-        _func.launchActivity(new Intent(MainActivity.this, MatchActivity.class));
+        startActivity(new Intent(MainActivity.this, TeamActivity.class));
     }
     public void whistletoolClicked(View b) {
-        _func.launchActivity(new Intent(MainActivity.this, WhistletoolActivity.class));
+        startActivity(new Intent(MainActivity.this, TeamActivity.class));
     }
     public void newteamClicked(View b) {
-        _func.launchActivity(new Intent(MainActivity.this, NewteamActivity.class));
+        startActivity(new Intent(MainActivity.this, TeamActivity.class));
     }
 }

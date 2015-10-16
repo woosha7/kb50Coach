@@ -13,10 +13,6 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class GeneralFunctions extends AppCompatActivity {
 
-    void launchActivity(Intent a){
-        startActivity(a);
-    }
-
     public Cursor cpRetrieveItem(String link, int i) {
         Uri item = Uri.parse(link + i);
         return cpRetrieveItems(item,null,null);
