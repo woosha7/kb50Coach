@@ -30,51 +30,92 @@ public class TestContentProviderCoach extends ProviderTestCase2<Provider> {
             e.printStackTrace();
         }
 
-        Log.d("START:","....");
+        Log.d("START:", "....");
 
     }
 
 
 
+    public void testCrudTeam(){
+        Uri uri  = Uri.parse("content://coach/team");
+        ContentValues team = new ContentValues();
 
-    public void testLoadItems(){
+        String expextedCity = "MUNICH";
+        String expextedName = "TEAM 1";
+        String expextedClub = "BAYERN MUNICH";
+        String changedClub  = "BAYERN MUNICH AD";
 
-        String id,name,city,club;
+        String retrievedCity = "";
+        String retrievedName = "";
+        String retrievedClub = "";
 
-        ContentValues cv = new ContentValues();
+        team.put("club",expextedClub);
+        team.put("city",expextedCity);
+        team.put("name" ,expextedName);
 
-        cv.put("club","FC AGGAfff");
-        cv.put("city","DEN HAAGfff");
-        cv.put("name" ,"E2s");
+        //create
+        resolve.insert(uri, team);
 
-        resolve.insert(Uri.parse("content://coach/team"),cv);
+        //Now check if items exists
+        Cursor c = resolve.query(Uri.parse("content://coach/team/1"), null, null, null, null);
+        String id;
 
-        ContentValues cv1 = new ContentValues();
-        cv1.put("club","xxx" );
-        cv1.put("city","xxx" );
-        cv1.put("name" ,"xxx");
-
-        resolve.insert(Uri.parse("content://coach/team"),cv1);
-
-        Cursor c = resolve.query(Uri.parse("content://coach/team"), null, null, null, null);
-
-        Log.d("STEP2","CHECK LIST");
         if (c!= null) {
             if (c.moveToFirst()) {
                 do {
-                    id      = c.getString(c.getColumnIndex("id"));
-                    city    = c.getString(c.getColumnIndex("city"));
+                    id                  = c.getString(c.getColumnIndex("id"));
+                    retrievedCity       = c.getString(c.getColumnIndex("city"));
+                    retrievedName       = c.getString(c.getColumnIndex("name"));
+                    retrievedClub       = c.getString(c.getColumnIndex("club"));
 
-                    Log.d("LIST:",":::::" + id + ":" + city);
                 } while (c.moveToNext());
             }
-            else{
-                Log.d("LIST:","EMPTY");
+        }
+
+        //test insert
+        assertEquals(expextedCity, retrievedCity);
+        assertEquals(expextedName, retrievedName);
+        assertEquals(expextedClub,retrievedClub);
+
+
+        team.put("club", changedClub);
+        resolve.update(Uri.parse("content://coach/team/1"), team, null, null);
+
+        //Now check if items exists
+        Cursor cd = resolve.query(Uri.parse("content://coach/team/1"), null, null, null, null);
+        String idd;
+
+        if (cd!= null) {
+            if (cd.moveToFirst()) {
+                do {
+                    retrievedClub       = cd.getString(c.getColumnIndex("club"));
+
+                } while (cd.moveToNext());
             }
         }
-        else{
-            Log.d("LIST:","EMPTY");
+
+        //test update
+        assertEquals(changedClub,retrievedClub);
+
+        //delete
+        resolve.delete(Uri.parse("content://coach/team/1"), null, null);
+
+        //Now check if items exists
+        Cursor de = resolve.query(Uri.parse("content://coach/team/1"), null, null, null, null);
+        String idde;
+
+        retrievedClub = "";
+        if (de!= null) {
+            if (de.moveToFirst()) {
+                do {
+                    retrievedClub           = de.getString(c.getColumnIndex("club"));
+
+                } while (cd.moveToNext());
+            }
         }
+
+        //test delete
+        assertEquals("",retrievedClub);
     }
 
     @Override
